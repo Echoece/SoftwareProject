@@ -41,9 +41,10 @@ public class NurseController {
         return nurseRepository.save(nurse);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Nurse nurse){
-        nurseRepository.delete(nurse);
+    @DeleteMapping ("/{id}")
+    public void delete(@PathVariable long id){
+        Nurse vaccine = nurseRepository.findById(id).orElseThrow(RuntimeException::new);
+        nurseRepository.delete(vaccine);
     }
 
 

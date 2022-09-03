@@ -41,7 +41,8 @@ public class CerftificateController {
     }
 
     @DeleteMapping ("/{id}")
-    public void delete(@PathVariable Certificate certificate){
-        certificateRepository.delete(certificate);
+    public void delete(@PathVariable long id){
+        Certificate vaccine = certificateRepository.findById(id).orElseThrow(RuntimeException::new);
+        certificateRepository.delete(vaccine);
     }
 }

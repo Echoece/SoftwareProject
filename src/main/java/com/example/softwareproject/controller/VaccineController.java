@@ -1,7 +1,8 @@
 package com.example.softwareproject.controller;
 
-import com.example.softwareproject.entity.Booth;
-import com.example.softwareproject.repository.BoothRepository;
+
+import com.example.softwareproject.entity.Vaccine;
+import com.example.softwareproject.repository.VaccineRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,34 +16,34 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping ("api/v1/booth")
+@RequestMapping ("api/v1/vaccine")
 @AllArgsConstructor
-public class BoothController {
-    private final BoothRepository boothRepository;
+public class VaccineController {
+    private final VaccineRepository vaccineRepository;
 
     @GetMapping
-    public List<Booth> getAll(){
-        return boothRepository.findAll();
+    public List<Vaccine> getAll(){
+        return vaccineRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Booth getById(@PathVariable Long id){
-        return boothRepository.findById(id).orElseThrow(RuntimeException::new);
+    public Vaccine getById(@PathVariable Long id){
+        return vaccineRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     @PostMapping
-    public Booth save(@RequestBody Booth booth){
-        return boothRepository.save(booth);
+    public Vaccine save(@RequestBody Vaccine vaccine){
+        return vaccineRepository.save(vaccine);
     }
 
     @PatchMapping
-    public Booth update(@RequestBody Booth booth){
-        return boothRepository.save(booth);
+    public Vaccine update(@RequestBody Vaccine vaccine){
+        return vaccineRepository.save(vaccine);
     }
 
     @DeleteMapping ("/{id}")
     public void delete(@PathVariable long id){
-        Booth vaccine = boothRepository.findById(id).orElseThrow(RuntimeException::new);
-        boothRepository.delete(vaccine);
+        Vaccine vaccine = vaccineRepository.findById(id).orElseThrow(RuntimeException::new);
+        vaccineRepository.delete(vaccine);
     }
 }

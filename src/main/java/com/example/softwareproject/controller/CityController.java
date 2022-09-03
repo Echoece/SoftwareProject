@@ -41,7 +41,8 @@ public class CityController {
     }
 
     @DeleteMapping ("/{id}")
-    public void delete(@PathVariable City city){
-        cityRepository.delete(city);
+    public void delete(@PathVariable long id){
+        City vaccine = cityRepository.findById(id).orElseThrow(RuntimeException::new);
+        cityRepository.delete(vaccine);
     }
 }
